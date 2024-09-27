@@ -1,0 +1,21 @@
+﻿@model MvcCv.Models.Entity.TblSocialMedia
+@{
+    ViewBag.Title = "EditSocialMedia";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Edit Social Media</h2>
+<form method="post">
+    @Html.Label("Name")
+    @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
+    <br />
+    @Html.Label("Link")
+    @Html.TextBoxFor(x => x.Link, new { @class = "form-control" })
+    <br />
+    @Html.Label("Icon")
+    @Html.TextBoxFor(x => x.Icon, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Save Update</button>
+</form>
+
+

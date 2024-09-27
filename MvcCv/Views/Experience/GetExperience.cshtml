@@ -1,0 +1,26 @@
+﻿@model MvcCv.Models.Entity.TblExperience
+@{
+    ViewBag.Title = "GetExperience";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Update Experience</h2>
+
+<form method="post">
+    @Html.Label("Experience ID")
+    @Html.TextBoxFor(x => x.ID, new { @class = "form-control" })
+    <br />
+    @Html.Label("Header")
+    @Html.TextBoxFor(x => x.Header, new { @class = "form-control" })
+    <br />
+    @Html.Label("Subheader")
+    @Html.TextBoxFor(x => x.Subheader, new { @class = "form-control" })
+    <br />
+    @Html.Label("Date")
+    @Html.TextBoxFor(x => x.Date, new { @class = "form-control" })
+    <br />
+    @Html.Label("Desctiption")
+    @Html.TextAreaFor(x => x.Description, new {@class = "form-control"})
+    <br />
+    <button class="btn btn-info">Save Update</button>
+</form>

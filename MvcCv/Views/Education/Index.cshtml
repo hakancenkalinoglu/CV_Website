@@ -1,0 +1,51 @@
+﻿@using MvcCv.Models.Entity
+@model List<TblEducation>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Education</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Header</th>
+            <th>Subheader</th>
+            <th>Subheader2</th>
+            <th>GNO</th>
+            <th>Date</th>
+            <th>Düzenle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Header</td>
+            <td>@item.Subheader1</td>
+            <td>@item.Subheader2</td>
+            <td>@item.GNO</td>
+            <td>@item.Date</td>
+            <td>
+                <a class="btn btn-info btn-sm" href="/Education/EditEducation/@item.ID">
+                    <i class="fas fa-pencil-alt"></i>
+                    Edit
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger btn-sm" href="/Education/DeleteEducation/@item.ID">
+                    <i class="fas fa-trash">
+                    </i>
+                    Delete
+                </a>
+            </td>
+        </tr>
+
+    }
+</table>
+<a href="/Education/AddNewEducation" class="btn btn-primary">Add New Education</a>

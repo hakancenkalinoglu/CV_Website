@@ -1,0 +1,99 @@
+﻿@using MvcCv.Models.Entity
+@model List<TblSocialMedia>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Social Medias</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">New Social Media</button>
+                                <br />
+                                <br />
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10px">#</th>
+                                            <th>Skill</th>
+                                            <th>Active</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+
+                                            <tr>
+                                                <td>@item.ID.</td>
+                                                <td>@item.Ad</td>
+                                                <td>@item.Active</td>
+                                                <td>
+                                                    <a class="btn btn-info btn-sm" href="/SocialMedia/EditSocialMedia/@item.ID">
+                                                        <i class="fas fa-pencil-alt"></i>
+                                                        Edit
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-danger btn-sm" href="/SocialMedia/StatusSocialMedia/@item.ID">
+                                                        <i class="fas fa-eye">
+                                                        </i>
+                                                        Status
+                                                    </a>
+                                                </td>
+
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+        <div class="modal" id="Modal1">
+            <div class="modal-dialog">
+                <div style="padding:40px" class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Add New Social Media</h2>
+                    </div>
+                    <form method="post" action="/SocialMedia/AddSocialMedia">
+                        <label>Social Media Name</label>
+                        <input type="text" name="Ad" class="form-control" />
+
+                        <label>Social Media Link</label>
+                        <input type="text" name="Link" class="form-control" />
+
+                        <label>Social Media Icon</label>
+                        <input type="text" name="Icon" class="form-control" />
+                        <br />
+                        <button class="btn btn-info">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

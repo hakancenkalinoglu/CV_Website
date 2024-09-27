@@ -1,0 +1,18 @@
+﻿@model MvcCv.Models.Entity.TblCertificate
+@{
+    ViewBag.Title = "GetCertificate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>Certificate</h2>
+<br />
+<form method="post">
+    @Html.Label("Certificate Decription")
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    <br />
+    @Html.Label("Certificate Date")
+    @Html.TextBoxFor(x => x.Date, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Save</button>
+    <a href="/Certificate/DeleteCertificate/@ViewBag.d" class="btn btn-danger">Sil</a> 
+</form>
+

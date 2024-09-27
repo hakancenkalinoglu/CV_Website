@@ -1,0 +1,90 @@
+﻿@using MvcCv.Models.Entity
+@model List<TblSkill>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{string color = "";}
+
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Yetenek Listem</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <a href="/Skills/AddNewSkill" class="btn btn-info">New Skill</a>
+                                <br />
+                                <br />
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10px">#</th>
+                                            <th>Skill</th>
+                                            <th>Progress</th>
+                                            <th style="width: 40px">Ratio</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach(var item in Model) {
+                                            if(item.Ratio >= 0 && item.Ratio <= 50)
+                                            {
+                                                color = "progress-bar bg-danger";
+                                            }else if(item.Ratio > 50 && item.Ratio <= 75)
+                                            {
+                                                color = "progress-bar bg-warning";
+                                            }else if(item.Ratio > 70 && item.Ratio <= 84)
+                                            {
+                                                color = "progress-bar bg-primary";
+                                            }else if(item.Ratio > 85 && item.Ratio <= 100)
+                                            {
+                                                color = "progress-bar bg-success";
+                                            }
+                                            <tr>
+                                                <td>@item.ID.</td>
+                                                <td>@item.Skill</td>
+                                                <td>
+                                                    <div class="progress progress-xs">
+                                                        <div class="@color" style="width: @item.Ratio%"></div>
+                                                    </div>
+                                                </td>
+                                                <td class="@color" style="width: 55px;">@item.Ratio%</td>
+                                                <td>
+                                                    <a class="btn btn-info btn-sm" href="/Skills/EditSkill/@item.ID">
+                                                        <i class="fas fa-pencil-alt"></i>
+                                                        Edit
+                                                    </a>
+                                                    <a class="btn btn-danger btn-sm" href="/Skills/DeleteSkill/@item.ID">
+                                                        <i class="fas fa-trash">
+                                                        </i>
+                                                        Delete
+                                                    </a>
+                                                </td>
+                                               
+                                            </tr>
+                                        }
+                                    
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+</body>
+</html>
+
